@@ -4,7 +4,12 @@ import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class WeatherDataContainer {
+import java.util.Calendar;
+import java.util.Date;
+
+import static pl.zzpwj.WeatherDataListInterface.millisecondsInSecond;
+
+public class WeatherDataTest {
 
     @Test
     public void weatherDataBuilderSuccess() {
@@ -70,6 +75,24 @@ public class WeatherDataContainer {
         Assert.assertEquals(weatherData.getTimeZone(), timeZone);
         Assert.assertEquals(weatherData.getSunriseTime(), sunriseTime);
         Assert.assertEquals(weatherData.getSunsetTime(), sunsetTime);
+    }
+
+    @Test
+    public void dateCompatibility() {
+        Long actualTime = 1623505691L;
+        Date actualDate = new Date(actualTime * millisecondsInSecond);
+        Assert.assertEquals(actualDate, new Date(2021 - 1900, Calendar.JUNE, 12, 15, 48, 11));
+
+        WeatherData weatherData = WeatherData.builder()
+                .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
+                .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
+                .windVelocity(4.f).windDirection(270.f).actualTime(1623505691L).timeZone(7200L)
+                .sunriseTime(1623464617L).sunsetTime(1623524433L).build();
+
+        actualTime = weatherData.getActualTime();
+        actualDate = weatherData.getActualTimeAsDate();
+        Assert.assertEquals(Long.valueOf(actualDate.getTime() / millisecondsInSecond), actualTime);
+        Assert.assertEquals(actualDate, new Date(actualTime * millisecondsInSecond));
     }
 
 }

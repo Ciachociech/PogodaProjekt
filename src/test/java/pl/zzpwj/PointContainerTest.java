@@ -9,13 +9,13 @@ import java.util.ArrayList;
 public class PointContainerTest {
 
     @Test
-    public void PointContainerGenerating() {
+    public void pointContainerGenerating() {
         PointContainer pointContainer = new PointContainer();
         Assert.assertEquals(0, pointContainer.getPoints().size());
     }
 
     @Test
-    public void PointContainerAdding() {
+    public void pointContainerAdding() {
         PointContainer pointContainer = new PointContainer();
         Point point = Point.builder().id(0).name("Test").longitude(1.0f).latitude(1.0f).build();
         Point point1 = Point.builder().id(1).name("Test1").longitude(1.1f).latitude(1.1f).build();
@@ -37,7 +37,7 @@ public class PointContainerTest {
     }
 
     @Test
-    public void PointContainerSearching() {
+    public void pointContainerSearching() {
         PointContainer pointContainer = new PointContainer();
         Point point = Point.builder().id(0).name("Test").longitude(1.0f).latitude(1.0f).build();
         Point point1 = Point.builder().id(1).name("Test1").longitude(1.1f).latitude(1.1f).build();
