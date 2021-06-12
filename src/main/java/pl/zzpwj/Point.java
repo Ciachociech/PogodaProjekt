@@ -5,7 +5,6 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @ToString
-@Setter
 @Getter
 @Builder
 public class Point {
