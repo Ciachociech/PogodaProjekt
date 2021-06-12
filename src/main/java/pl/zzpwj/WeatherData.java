@@ -2,13 +2,15 @@ package pl.zzpwj;
 
 import lombok.*;
 
+import java.util.Date;
+
 @NoArgsConstructor (access = AccessLevel.PRIVATE)
 @AllArgsConstructor (access = AccessLevel.PUBLIC)
 @Builder
 @Getter
 @ToString
-public class WeatherData
-{
+@EqualsAndHashCode
+public class WeatherData {
     private Point point;
     private Float actualTemperature;
     private Float feelTemperature;
@@ -20,4 +22,9 @@ public class WeatherData
     private Long timeZone;
     private Long sunriseTime;
     private Long sunsetTime;
+
+    public Date getActualTimeAsDate() {
+        return new Date(actualTime * 1000);
+    }
+
 }

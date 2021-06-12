@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PogodaProjekt" target="1.7" />
+      <module name="PogodaProjekt" target="7" />
     </bytecodeTargetLevel>
   </component>
 </project>

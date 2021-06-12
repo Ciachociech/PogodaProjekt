@@ -7,6 +7,7 @@ import lombok.*;
 @ToString
 @Getter
 @Builder
+@EqualsAndHashCode
 public class Point {
     private Integer id;
     private String name;
