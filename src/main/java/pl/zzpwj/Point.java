@@ -2,10 +2,11 @@ package pl.zzpwj;
 
 import lombok.*;
 
-@AllArgsConstructor(access=AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 @ToString
-@Getter
 @Setter
+@Getter
 @Builder
 public class Point {
     private Integer id;
