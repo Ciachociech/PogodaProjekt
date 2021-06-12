@@ -5,5 +5,5 @@ import lombok.*;
 
 public class ForecastContainer
 {
-    ArrayList<WeatherData> history;
+    ArrayList<WeatherData> forecast;
 }
