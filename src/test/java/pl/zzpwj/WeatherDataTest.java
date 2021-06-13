@@ -95,4 +95,64 @@ public class WeatherDataTest {
         Assert.assertEquals(actualDate, new Date(actualTime * millisecondsInSecond));
     }
 
+    @Test
+    public void weatherDataEqualsAndHashCode() {
+        Point point = Point.builder().id(0).name("Test").longitude(1.0f).latitude(1.0f).build();
+
+        Float actualTemperature = 297.f;
+        Float feelTemperature = 298.f;
+        Float pressure = 1000.f;
+        Float humidity = 94.f;
+        Float windVelocity = 4.f;
+        Float windDirection = 270.f;
+        Long actualTime = 1623505691L;
+        Long timeZone = 7200L;
+        Long sunriseTime = 1623464617L;
+        Long sunsetTime = 1623524433L;
+
+        WeatherData weatherData = WeatherData.builder().point(point).actualTemperature(actualTemperature)
+                .feelTemperature(feelTemperature).pressure(pressure).humidity(humidity)
+                .windVelocity(windVelocity).windDirection(windDirection).actualTime(actualTime).timeZone(timeZone)
+                .sunriseTime(sunriseTime).sunsetTime(sunsetTime).build();
+
+        Assert.assertEquals(weatherData.getPoint(), point);
+        Assert.assertEquals(weatherData.getPoint().getId(), point.getId());
+        Assert.assertEquals(weatherData.getPoint().getName(), point.getName());
+        Assert.assertEquals(point.getLongitude(), weatherData.getPoint().getLongitude(), 0.0);
+        Assert.assertEquals(point.getLatitude(), weatherData.getPoint().getLatitude(), 0.0);
+
+        Assert.assertTrue(point.equals(weatherData.getPoint()));
+        Assert.assertEquals(point.hashCode(), weatherData.getPoint().hashCode());
+
+        Assert.assertEquals(weatherData.getActualTemperature(), actualTemperature);
+        Assert.assertEquals(weatherData.getFeelTemperature(), feelTemperature);
+        Assert.assertEquals(weatherData.getPressure(), pressure);
+        Assert.assertEquals(weatherData.getHumidity(), humidity);
+        Assert.assertEquals(weatherData.getWindVelocity(), windVelocity);
+        Assert.assertEquals(weatherData.getWindDirection(), windDirection);
+        Assert.assertEquals(weatherData.getActualTime(), actualTime);
+        Assert.assertEquals(weatherData.getTimeZone(), timeZone);
+        Assert.assertEquals(weatherData.getSunriseTime(), sunriseTime);
+        Assert.assertEquals(weatherData.getSunsetTime(), sunsetTime);
+
+        Assert.assertTrue(weatherData.equals(WeatherData.builder().point(point).actualTemperature(actualTemperature)
+                .feelTemperature(feelTemperature).pressure(pressure).humidity(humidity)
+                .windVelocity(windVelocity).windDirection(windDirection).actualTime(actualTime).timeZone(timeZone)
+                .sunriseTime(sunriseTime).sunsetTime(sunsetTime).build()));
+        Assert.assertEquals(weatherData.hashCode(), WeatherData.builder().point(point).actualTemperature(actualTemperature)
+                .feelTemperature(feelTemperature).pressure(pressure).humidity(humidity)
+                .windVelocity(windVelocity).windDirection(windDirection).actualTime(actualTime).timeZone(timeZone)
+                .sunriseTime(sunriseTime).sunsetTime(sunsetTime).build().hashCode());
+        Assert.assertTrue(weatherData.equals(WeatherData.builder()
+                .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
+                .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
+                .windVelocity(4.f).windDirection(270.f).actualTime(1623505691L).timeZone(7200L)
+                .sunriseTime(1623464617L).sunsetTime(1623524433L).build()));
+        Assert.assertEquals(weatherData.hashCode(), WeatherData.builder()
+                .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
+                .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
+                .windVelocity(4.f).windDirection(270.f).actualTime(1623505691L).timeZone(7200L)
+                .sunriseTime(1623464617L).sunsetTime(1623524433L).build().hashCode());
+    }
+
 }
