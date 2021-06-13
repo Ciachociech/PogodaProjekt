@@ -1,13 +1,10 @@
-package pl.zzpwj;
+package pl.zzpwj.data;
 
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.Date;
-
-import static pl.zzpwj.WeatherDataListInterface.millisecondsInSecond;
 
 public class WeatherDataTest {
 
@@ -80,7 +77,7 @@ public class WeatherDataTest {
     @Test
     public void dateCompatibility() {
         Long actualTime = 1623505691L;
-        Date actualDate = new Date(actualTime * millisecondsInSecond);
+        Date actualDate = new Date(actualTime * WeatherDataListInterface.millisecondsInSecond);
         Assert.assertEquals(actualDate, new Date(2021 - 1900, Calendar.JUNE, 12, 15, 48, 11));
 
         WeatherData weatherData = WeatherData.builder()
@@ -91,8 +88,8 @@ public class WeatherDataTest {
 
         actualTime = weatherData.getActualTime();
         actualDate = weatherData.getActualTimeAsDate();
-        Assert.assertEquals(Long.valueOf(actualDate.getTime() / millisecondsInSecond), actualTime);
-        Assert.assertEquals(actualDate, new Date(actualTime * millisecondsInSecond));
+        Assert.assertEquals(Long.valueOf(actualDate.getTime() / WeatherDataListInterface.millisecondsInSecond), actualTime);
+        Assert.assertEquals(actualDate, new Date(actualTime * WeatherDataListInterface.millisecondsInSecond));
     }
 
     @Test

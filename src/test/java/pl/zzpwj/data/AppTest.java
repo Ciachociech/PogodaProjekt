@@ -1,4 +1,4 @@
-package pl.zzpwj;
+package pl.zzpwj.data;
 
 import static org.junit.Assert.assertTrue;
 

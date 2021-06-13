@@ -1,10 +1,7 @@
-package pl.zzpwj;
+package pl.zzpwj.data;
 
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 public class PointContainerTest {
 

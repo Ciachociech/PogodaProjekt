@@ -1,12 +1,10 @@
-package pl.zzpwj;
+package pl.zzpwj.data;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
-
-import static pl.zzpwj.WeatherDataListInterface.millisecondsInSecond;
 
 public class HistoryContainerTest {
 
@@ -139,8 +137,8 @@ public class HistoryContainerTest {
         Assert.assertEquals(1, historyContainer.getHistoryOfPoint(Point.builder().id(7).name("Test4")
                 .longitude(1.4f).latitude(1.4f).build()).size());
 
-        Assert.assertEquals(weatherData, historyContainer.getWeatherDataByDate(new Date(1623505741L * millisecondsInSecond)));
+        Assert.assertEquals(weatherData, historyContainer.getWeatherDataByDate(new Date(1623505741L * WeatherDataListInterface.millisecondsInSecond)));
         Assert.assertEquals(weatherData1, historyContainer.getWeatherDataByDate(weatherData1.getActualTimeAsDate()));
-        Assert.assertNull(historyContainer.getWeatherDataByDate(new Date(1623509999L * millisecondsInSecond)));
+        Assert.assertNull(historyContainer.getWeatherDataByDate(new Date(1623509999L * WeatherDataListInterface.millisecondsInSecond)));
     }
 }

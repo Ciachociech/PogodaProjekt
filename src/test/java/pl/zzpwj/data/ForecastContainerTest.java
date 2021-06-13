@@ -1,4 +1,4 @@
-package pl.zzpwj;
+package pl.zzpwj.data;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static pl.zzpwj.WeatherDataListInterface.millisecondsInSecond;
+import static pl.zzpwj.data.WeatherDataListInterface.millisecondsInSecond;
 
 public class ForecastContainerTest {
 
