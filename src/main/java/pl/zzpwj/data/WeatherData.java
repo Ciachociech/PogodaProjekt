@@ -6,7 +6,7 @@ import java.util.Date;
 
 @NoArgsConstructor (access = AccessLevel.PRIVATE)
 @AllArgsConstructor (access = AccessLevel.PUBLIC)
-@Builder
+@Builder (access = AccessLevel.PUBLIC)
 @Getter
 @ToString
 @EqualsAndHashCode
