@@ -1,7 +1,6 @@
 package pl.zzpwj.logic;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import pl.zzpwj.data.Point;
 import pl.zzpwj.data.WeatherData;
