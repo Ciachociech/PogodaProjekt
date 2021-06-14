@@ -14,15 +14,14 @@ public class PointLoader implements PointLoaderInterface {
 
     public ArrayList<Point> readPointsFromJSON() throws IOException {
         ArrayList<Point> points = new ArrayList<>();
-        JSONObject jsonObject = queryJSON();
+        JSONArray jsonObject = queryJSON();
         return parseCitiesByCountry(jsonObject);
     }
 
-    private JSONObject queryJSON() throws IOException {
+    private JSONArray queryJSON() throws IOException {
         BufferedReader bReader = new BufferedReader(new FileReader(PointLoaderInterface.jsonFilePath));
         String jsonString = stringReader(bReader);
-        jsonString = removeBrackets(jsonString);
-        return new JSONObject(jsonString);
+        return new JSONArray(jsonString);
     }
 
     private String stringReader(Reader reader) throws IOException {
@@ -34,13 +33,8 @@ public class PointLoader implements PointLoaderInterface {
         return sReader.toString();
     }
 
-    private String removeBrackets(String oldString) {
-        return oldString.replace("[", "").replace("]", "");
-    }
-
-    private ArrayList<Point> parseCitiesByCountry(JSONObject json) {
+    private ArrayList<Point> parseCitiesByCountry(JSONArray jsonArray) {
         ArrayList<Point> retPoints = new ArrayList<>();
-        JSONArray jsonArray = new JSONArray(json);
         for (int i = 0; i < jsonArray.length(); i++) {
             if(jsonArray.getJSONObject(i).getString("country").equals("PL")) {
                 retPoints.add(Point.builder()
