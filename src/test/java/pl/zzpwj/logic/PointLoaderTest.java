@@ -2,8 +2,10 @@ package pl.zzpwj.logic;
 
 import org.junit.Assert;
 import org.junit.Test;
+import pl.zzpwj.data.Point;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class PointLoaderTest {
 
@@ -11,8 +13,7 @@ public class PointLoaderTest {
 
     @Test
     public void PointLoaderReadFile() throws IOException {
-        pointLoader.readPointsFromJSON();
-        Assert.assertTrue(true);
-
+        ArrayList<Point> plPoints = pointLoader.readPointsFromJSON();
+        Assert.assertEquals(4100, plPoints.size());
     }
 }
