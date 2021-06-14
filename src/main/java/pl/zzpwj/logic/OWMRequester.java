@@ -73,16 +73,15 @@ public class OWMRequester implements OWMPropertiesInterface {
 
     private ArrayList<WeatherData> parseArrayFromJSON(JSONObject json) {
         ArrayList<WeatherData> retData = new ArrayList<>();
-        JSONArray jsonArray = json.getJSONArray("list");
-        for (int i = 0; i < jsonArray.length(); i++) {
+        for (int i = 0; i < json.getJSONArray("list").length(); i++) {
             retData.add(WeatherData.builder().point(point)
-                    .actualTemperature(jsonArray.getJSONObject(i).getFloat("temp"))
-                    .feelTemperature(jsonArray.getJSONObject(i).getFloat("feels_like"))
-                    .pressure(jsonArray.getJSONObject(i).getFloat("pressure"))
-                    .humidity(jsonArray.getJSONObject(i).getFloat("humidity"))
-                    .windVelocity(jsonArray.getJSONObject(i).getFloat("speed"))
-                    .windDirection(jsonArray.getJSONObject(i).getFloat("deg"))
-                    .actualTime(jsonArray.getJSONObject(i).getLong("dt"))
+                    .actualTemperature(json.getJSONArray("list").getJSONObject(i).getJSONObject("main").getFloat("temp"))
+                    .feelTemperature(json.getJSONArray("list").getJSONObject(i).getJSONObject("main").getFloat("feels_like"))
+                    .pressure(json.getJSONArray("list").getJSONObject(i).getJSONObject("main").getFloat("pressure"))
+                    .humidity(json.getJSONArray("list").getJSONObject(i).getJSONObject("main").getFloat("humidity"))
+                    .windVelocity(json.getJSONArray("list").getJSONObject(i).getJSONObject("wind").getFloat("speed"))
+                    .windDirection(json.getJSONArray("list").getJSONObject(i).getJSONObject("wind").getFloat("deg"))
+                    .actualTime(json.getJSONArray("list").getJSONObject(i).getLong("dt"))
                     .timeZone(json.getJSONObject("city").getLong("timezone"))
                     .sunriseTime(json.getJSONObject("city").getLong("sunrise"))
                     .sunsetTime(json.getJSONObject("city").getLong("sunset")).build());
