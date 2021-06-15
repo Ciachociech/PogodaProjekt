@@ -14,7 +14,7 @@ public class PointContainer
                 return p;
             }
         }
-        return null;
+        return new Point.NullPoint();
     }
 
     public ArrayList<Point> getPointByName(String name) {

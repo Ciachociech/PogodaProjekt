@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static pl.zzpwj.data.WeatherDataListInterface.millisecondsInSecond;
+
 public class HistoryContainerTest {
 
     @Test
@@ -96,7 +98,7 @@ public class HistoryContainerTest {
         ArrayList<WeatherData> pointHistory = historyContainer.getHistoryOfPoint(point);
         Assert.assertEquals(3, pointHistory.size());
         WeatherData weatherData2 = pointHistory.get(0);
-        Assert.assertNotNull(weatherData2);
+        Assert.assertNotSame(weatherData2.getClass(), WeatherData.NullWeatherData.class);
         Assert.assertEquals(weatherData.getPoint().getId(), Integer.valueOf(0));
         Assert.assertEquals(weatherData.getPoint().getName(), "Test");
         Assert.assertEquals(1.0f, weatherData.getPoint().getLongitude(), 0.0);
@@ -139,6 +141,6 @@ public class HistoryContainerTest {
 
         Assert.assertEquals(weatherData, historyContainer.getWeatherDataByDate(new Date(1623505741L * WeatherDataListInterface.millisecondsInSecond)));
         Assert.assertEquals(weatherData1, historyContainer.getWeatherDataByDate(weatherData1.getActualTimeAsDate()));
-        Assert.assertNull(historyContainer.getWeatherDataByDate(new Date(1623509999L * WeatherDataListInterface.millisecondsInSecond)));
+        Assert.assertSame(historyContainer.getWeatherDataByDate(new Date(1623509999L * millisecondsInSecond)).getClass(), WeatherData.NullWeatherData.class);
     }
 }

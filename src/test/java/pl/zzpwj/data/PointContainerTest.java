@@ -49,7 +49,7 @@ public class PointContainerTest {
 
         Assert.assertEquals(pointContainer.getPointById(0), point);
         Assert.assertEquals(pointContainer.getPointById(1), point1);
-        Assert.assertNull(pointContainer.getPointById(4));
+        Assert.assertSame(pointContainer.getPointById(4).getClass(), Point.NullPoint.class);
 
         ArrayList<Point> pointTest = pointContainer.getPointByName("Test");
         Assert.assertEquals(1, pointTest.size());

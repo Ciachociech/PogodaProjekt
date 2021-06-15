@@ -143,11 +143,11 @@ public class ForecastContainerTest {
         Assert.assertEquals(weatherDataArrayList.get(3).getSunsetTime(), Long.valueOf(1623524433L));
 
         WeatherData weatherData2 = weatherDataArrayList.get(4);
-        Assert.assertNotNull(weatherData2);
+        Assert.assertNotSame(weatherData2.getClass(), WeatherData.NullWeatherData.class);
 
         Assert.assertEquals(weatherData, forecastContainer.getWeatherDataByDate(new Date(1623505742L * millisecondsInSecond)));
         Assert.assertEquals(weatherData1, forecastContainer.getWeatherDataByDate(weatherData1.getActualTimeAsDate()));
-        Assert.assertNull(forecastContainer.getWeatherDataByDate(new Date(1623509999L * millisecondsInSecond)));
+        Assert.assertSame(forecastContainer.getWeatherDataByDate(new Date(1623509999L * millisecondsInSecond)).getClass(), WeatherData.NullWeatherData.class);
     }
 
 }

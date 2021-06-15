@@ -17,7 +17,7 @@ public class ForecastContainer implements WeatherDataListInterface
                 return data;
             }
         }
-        return null;
+        return new WeatherData.NullWeatherData();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class ForecastContainer implements WeatherDataListInterface
             forecast.add(data);
             return true;
         }
-        if(getWeatherDataByDate(data.getActualTimeAsDate()) == null && checkPointValidityWithListObjects(data.getPoint())) {
+        if(getWeatherDataByDate(data.getActualTimeAsDate()).getClass() == WeatherData.NullWeatherData.class && checkPointValidityWithListObjects(data.getPoint())) {
             forecast.add(data);
             return true;
         }

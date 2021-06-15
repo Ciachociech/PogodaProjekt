@@ -27,4 +27,12 @@ public class WeatherData {
         return new Date(actualTime * 1000);
     }
 
+    @ToString
+    public static final class NullWeatherData extends WeatherData {
+
+        public NullWeatherData() {
+            super(new Point.NullPoint(), 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0L, 0L, 0L, 0L);
+        }
+    }
+
 }

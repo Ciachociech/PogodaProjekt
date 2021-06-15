@@ -17,7 +17,7 @@ public class HistoryContainer implements WeatherDataListInterface
                 return data;
             }
         }
-        return null;
+        return new WeatherData.NullWeatherData();
     }
 
     public ArrayList<WeatherData> getHistoryOfPoint(Point point) {
@@ -32,7 +32,7 @@ public class HistoryContainer implements WeatherDataListInterface
 
     @Override
     public boolean addHistoryData(WeatherData data) {
-        if(getWeatherDataByDate(data.getActualTimeAsDate()) == null) {
+        if(getWeatherDataByDate(data.getActualTimeAsDate()).getClass() == WeatherData.NullWeatherData.class) {
             history.add(data);
             return true;
         }
