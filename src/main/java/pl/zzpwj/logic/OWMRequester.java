@@ -1,6 +1,7 @@
 package pl.zzpwj.logic;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.json.*;
 import pl.zzpwj.data.Point;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class OWMRequester implements OWMPropertiesInterface {
     private Point point;
 

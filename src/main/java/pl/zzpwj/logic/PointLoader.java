@@ -1,5 +1,6 @@
 package pl.zzpwj.logic;
 
+import lombok.NoArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import pl.zzpwj.data.Point;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 
+@NoArgsConstructor
 public class PointLoader implements PointLoaderInterface {
 
     public ArrayList<Point> readPointsFromJSON() throws IOException {
