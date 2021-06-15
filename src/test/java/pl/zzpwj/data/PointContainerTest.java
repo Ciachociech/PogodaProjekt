@@ -45,11 +45,12 @@ public class PointContainerTest {
         Assert.assertTrue(pointContainer.addPoint(point1));
         Assert.assertTrue(pointContainer.addPoint(Point.builder().id(2).name("Test2").longitude(1.2f).latitude(1.2f).build()));
         Assert.assertTrue(pointContainer.addPoint(Point.builder().id(3).name("Test3").longitude(1.3f).latitude(1.3f).build()));
-        Assert.assertEquals(4, pointContainer.getPoints().size());
+        Assert.assertTrue(pointContainer.addPoint(Point.builder().id(4).name("Test2").longitude(1.5f).latitude(1.5f).build()));
+        Assert.assertEquals(5, pointContainer.getPoints().size());
 
         Assert.assertEquals(pointContainer.getPointById(0), point);
         Assert.assertEquals(pointContainer.getPointById(1), point1);
-        Assert.assertSame(pointContainer.getPointById(4).getClass(), Point.NullPoint.class);
+        Assert.assertSame(pointContainer.getPointById(5).getClass(), Point.NullPoint.class);
 
         ArrayList<Point> pointTest = pointContainer.getPointByName("Test");
         Assert.assertEquals(1, pointTest.size());
@@ -59,5 +60,9 @@ public class PointContainerTest {
         Assert.assertEquals(pointTest1.get(0), point1);
         ArrayList<Point> pointTestX = pointContainer.getPointByName("TestX");
         Assert.assertEquals(0, pointTestX.size());
+        ArrayList<Point> pointTest2 = pointContainer.getPointByName("Test2");
+        Assert.assertEquals(2, pointTest2.size());
+        Assert.assertEquals(pointTest2.get(0).getName(), "Test2");
+        Assert.assertEquals(pointTest2.get(0).getName(), pointTest2.get(1).getName());
     }
 }

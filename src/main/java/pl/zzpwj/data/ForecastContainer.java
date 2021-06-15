@@ -21,7 +21,7 @@ public class ForecastContainer implements WeatherDataListInterface
     }
 
     @Override
-    public boolean addHistoryData(WeatherData data) {
+    public boolean addWeatherData(WeatherData data) {
         if(forecast.isEmpty()) {
             forecast.add(data);
             return true;

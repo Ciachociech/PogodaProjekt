@@ -31,7 +31,7 @@ public class HistoryContainer implements WeatherDataListInterface
     }
 
     @Override
-    public boolean addHistoryData(WeatherData data) {
+    public boolean addWeatherData(WeatherData data) {
         if(getWeatherDataByDate(data.getActualTimeAsDate()).getClass() == WeatherData.NullWeatherData.class) {
             history.add(data);
             return true;

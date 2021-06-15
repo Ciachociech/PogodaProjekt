@@ -28,7 +28,7 @@ public class PointContainer
     }
 
     public boolean addPoint(Point point) {
-        if(getPointById(point.getId()) == null) {
+        if(getPointById(point.getId()).getClass() == Point.NullPoint.class) {
             points.add(point);
             return true;
         }

@@ -21,7 +21,7 @@ public class ForecastContainerTest {
         ForecastContainer forecastContainer = new ForecastContainer();
         Assert.assertEquals(0, forecastContainer.getForecast().size());
 
-        Assert.assertTrue(forecastContainer.addHistoryData(WeatherData.builder()
+        Assert.assertTrue(forecastContainer.addWeatherData(WeatherData.builder()
                 .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505691L).timeZone(7200L)
@@ -33,7 +33,7 @@ public class ForecastContainerTest {
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505742L).timeZone(7200L)
                 .sunriseTime(1623464617L).sunsetTime(1623524433L).build();
-        Assert.assertTrue(forecastContainer.addHistoryData(weatherData));
+        Assert.assertTrue(forecastContainer.addWeatherData(weatherData));
         Assert.assertEquals(2, forecastContainer.getForecast().size());
 
         Point point = Point.builder().id(0).name("Test").longitude(1.0f).latitude(1.0f).build();
@@ -51,10 +51,10 @@ public class ForecastContainerTest {
                 .feelTemperature(feelTemperature).pressure(pressure).humidity(humidity)
                 .windVelocity(windVelocity).windDirection(windDirection).actualTime(actualTime).timeZone(timeZone)
                 .sunriseTime(sunriseTime).sunsetTime(sunsetTime).build();
-        Assert.assertTrue(forecastContainer.addHistoryData(weatherData1));
+        Assert.assertTrue(forecastContainer.addWeatherData(weatherData1));
         Assert.assertEquals(3, forecastContainer.getForecast().size());
 
-        Assert.assertFalse(forecastContainer.addHistoryData(WeatherData.builder()
+        Assert.assertFalse(forecastContainer.addWeatherData(WeatherData.builder()
                 .point(Point.builder().id(0).name("Test3").longitude(1.f).latitude(1.f).build())
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505971L).timeZone(7200L)
@@ -67,7 +67,7 @@ public class ForecastContainerTest {
         ForecastContainer forecastContainer = new ForecastContainer();
         Point point = Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build();
 
-        Assert.assertTrue(forecastContainer.addHistoryData(WeatherData.builder()
+        Assert.assertTrue(forecastContainer.addWeatherData(WeatherData.builder()
                 .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505691L).timeZone(7200L)
@@ -77,7 +77,7 @@ public class ForecastContainerTest {
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505742L).timeZone(7200L)
                 .sunriseTime(1623464617L).sunsetTime(1623524433L).build();
-        Assert.assertTrue(forecastContainer.addHistoryData(weatherData));
+        Assert.assertTrue(forecastContainer.addWeatherData(weatherData));
         Float actualTemperature = 297.f;
         Float feelTemperature = 298.f;
         Float pressure = 1000.f;
@@ -92,13 +92,13 @@ public class ForecastContainerTest {
                 .feelTemperature(feelTemperature).pressure(pressure).humidity(humidity)
                 .windVelocity(windVelocity).windDirection(windDirection).actualTime(actualTime).timeZone(timeZone)
                 .sunriseTime(sunriseTime).sunsetTime(sunsetTime).build();
-        Assert.assertTrue(forecastContainer.addHistoryData(weatherData1));
-        Assert.assertTrue(forecastContainer.addHistoryData(WeatherData.builder()
+        Assert.assertTrue(forecastContainer.addWeatherData(weatherData1));
+        Assert.assertTrue(forecastContainer.addWeatherData(WeatherData.builder()
                 .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505961L).timeZone(7200L)
                 .sunriseTime(1623464617L).sunsetTime(1623524433L).build()));
-        Assert.assertTrue(forecastContainer.addHistoryData(WeatherData.builder()
+        Assert.assertTrue(forecastContainer.addWeatherData(WeatherData.builder()
                 .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623506144L).timeZone(7200L)

@@ -21,7 +21,7 @@ public class HistoryContainerTest {
         HistoryContainer historyContainer = new HistoryContainer();
         Assert.assertEquals(0, historyContainer.getHistory().size());
 
-        Assert.assertTrue(historyContainer.addHistoryData(WeatherData.builder()
+        Assert.assertTrue(historyContainer.addWeatherData(WeatherData.builder()
                 .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505691L).timeZone(7200L)
@@ -33,7 +33,7 @@ public class HistoryContainerTest {
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505742L).timeZone(7200L)
                 .sunriseTime(1623464617L).sunsetTime(1623524433L).build();
-        Assert.assertTrue(historyContainer.addHistoryData(weatherData));
+        Assert.assertTrue(historyContainer.addWeatherData(weatherData));
         Assert.assertEquals(2, historyContainer.getHistory().size());
 
         Point point = Point.builder().id(0).name("Test").longitude(1.0f).latitude(1.0f).build();
@@ -51,10 +51,10 @@ public class HistoryContainerTest {
                 .feelTemperature(feelTemperature).pressure(pressure).humidity(humidity)
                 .windVelocity(windVelocity).windDirection(windDirection).actualTime(actualTime).timeZone(timeZone)
                 .sunriseTime(sunriseTime).sunsetTime(sunsetTime).build();
-        Assert.assertTrue(historyContainer.addHistoryData(weatherData1));
+        Assert.assertTrue(historyContainer.addWeatherData(weatherData1));
         Assert.assertEquals(3, historyContainer.getHistory().size());
 
-        Assert.assertFalse(historyContainer.addHistoryData(WeatherData.builder()
+        Assert.assertFalse(historyContainer.addWeatherData(WeatherData.builder()
                 .point(Point.builder().id(0).name("Test3").longitude(1.f).latitude(1.f).build())
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505691L).timeZone(7200L)
@@ -76,19 +76,19 @@ public class HistoryContainerTest {
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505842L).timeZone(7200L)
                 .sunriseTime(1623464617L).sunsetTime(1623524433L).build();
 
-        Assert.assertTrue(historyContainer.addHistoryData(weatherData));
-        Assert.assertTrue(historyContainer.addHistoryData(weatherData1));
-        Assert.assertTrue(historyContainer.addHistoryData(WeatherData.builder()
+        Assert.assertTrue(historyContainer.addWeatherData(weatherData));
+        Assert.assertTrue(historyContainer.addWeatherData(weatherData1));
+        Assert.assertTrue(historyContainer.addWeatherData(WeatherData.builder()
                 .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623507593L).timeZone(7200L)
                 .sunriseTime(1623464617L).sunsetTime(1623524433L).build()));
-        Assert.assertTrue(historyContainer.addHistoryData(WeatherData.builder()
+        Assert.assertTrue(historyContainer.addWeatherData(WeatherData.builder()
                 .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623508494L).timeZone(7200L)
                 .sunriseTime(1623464617L).sunsetTime(1623524433L).build()));
-        Assert.assertTrue(historyContainer.addHistoryData(WeatherData.builder()
+        Assert.assertTrue(historyContainer.addWeatherData(WeatherData.builder()
                 .point(Point.builder().id(7).name("Test4").longitude(1.4f).latitude(1.4f).build())
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.4f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623512345L).timeZone(7200L)
