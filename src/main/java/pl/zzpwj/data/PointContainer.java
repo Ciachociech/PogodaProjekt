@@ -17,13 +17,14 @@ public class PointContainer
         return null;
     }
 
-    public Point getPointByName(String name) {
-        for (Point p : points) {
+    public ArrayList<Point> getPointByName(String name) {
+         ArrayList<Point> retPoints = new ArrayList<>();
+         for (Point p : points) {
             if(p.getName().equals(name)) {
-                return p;
+                retPoints.add(p);
             }
         }
-        return null;
+        return retPoints;
     }
 
     public boolean addPoint(Point point) {

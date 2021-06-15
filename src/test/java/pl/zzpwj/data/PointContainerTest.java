@@ -3,6 +3,8 @@ package pl.zzpwj.data;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class PointContainerTest {
 
     @Test
@@ -49,8 +51,13 @@ public class PointContainerTest {
         Assert.assertEquals(pointContainer.getPointById(1), point1);
         Assert.assertNull(pointContainer.getPointById(4));
 
-        Assert.assertEquals(pointContainer.getPointByName("Test"), point);
-        Assert.assertEquals(pointContainer.getPointByName("Test1"), point1);
-        Assert.assertNull(pointContainer.getPointByName("TestX"));
+        ArrayList<Point> pointTest = pointContainer.getPointByName("Test");
+        Assert.assertEquals(1, pointTest.size());
+        Assert.assertEquals(pointTest.get(0), point);
+        ArrayList<Point> pointTest1 = pointContainer.getPointByName("Test1");
+        Assert.assertEquals(1, pointTest1.size());
+        Assert.assertEquals(pointTest1.get(0), point1);
+        ArrayList<Point> pointTestX = pointContainer.getPointByName("TestX");
+        Assert.assertEquals(0, pointTestX.size());
     }
 }
