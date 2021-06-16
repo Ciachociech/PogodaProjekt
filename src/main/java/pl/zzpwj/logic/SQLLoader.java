@@ -15,9 +15,9 @@ public class SQLLoader extends SQLConnector {
     public HistoryContainer read(String database) throws SQLException {
         HistoryContainer historyContainer = new HistoryContainer();
 
-        super.connect(database);
+        super.connect(new StringBuilder().append(db).append(database).toString());
 
-        String select = new StringBuilder().append("SELECT * FROM ").append(historyContainer.getClass().getName()).toString();
+        String select = new StringBuilder().append("SELECT * FROM ").append(historyContainer.getClass().getSimpleName()).toString();
         PreparedStatement preparedStatement = getConnection().prepareStatement(select);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next())
@@ -44,6 +44,3 @@ public class SQLLoader extends SQLConnector {
         return historyContainer;
     }
 }
-
-//podlać skalniak
-//podlać kwiaty w domu
