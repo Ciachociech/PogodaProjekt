@@ -10,15 +10,15 @@ import java.sql.Statement;
 @NoArgsConstructor
 public class SQLWriter extends SQLConnector {
 
-    public void write(HistoryContainer history) throws SQLException {
-        super.connect();
+    public void write(HistoryContainer history, String database) throws SQLException {
+        super.connect(database);
 
         String create = new StringBuilder().append("CREATE TABLE ").append(history.getClass().getName())
                 .append(" (pointID integer, pointName varchar(32), pointLong real, pointLat real,")
                 .append(" actualTemp real, realTemp real, pressure real, humidity real, windVel real")
-                .append(" windDir real, actualTime integer, timeZone integer, sunriseTime integer, sunsetTime integer)").toString();
+                .append(" windDir real, actualTime integer, timeZone integer, sunriseTime integer, sunsetTime integer);").toString();
         String insert = new StringBuilder().append("INSERT INTO ").append(history.getClass().getName())
-                .append(" values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)").toString();
+                .append(" values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);").toString();
 
         Statement statement = getConnection().createStatement();
         statement.execute(create);

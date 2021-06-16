@@ -12,8 +12,8 @@ class SQLConnector implements SQLPropertiesInterface {
 
     private Connection connection;
 
-    protected void connect() throws SQLException {
-        this.connection = DriverManager.getConnection(db);
+    protected void connect(String database) throws SQLException {
+        this.connection = DriverManager.getConnection(database);
     }
 
     protected void close() throws SQLException {
