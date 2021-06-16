@@ -29,7 +29,7 @@ public class SQLLoader extends SQLConnector {
                             .latitude(resultSet.getFloat("pointLat"))
                             .longitude(resultSet.getFloat("pointLong")).build())
                     .actualTemperature(resultSet.getFloat("actualTemp"))
-                    .feelTemperature(resultSet.getFloat("feelTemp"))
+                    .feelTemperature(resultSet.getFloat("realTemp"))
                     .pressure(resultSet.getFloat("pressure"))
                     .humidity(resultSet.getFloat("humidity"))
                     .windVelocity(resultSet.getFloat("windVel"))
