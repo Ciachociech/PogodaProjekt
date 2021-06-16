@@ -40,6 +40,9 @@ public class SQLWriter extends SQLConnector {
             preparedStatement.setLong(12, history.getHistory().get(i).getTimeZone());
             preparedStatement.setLong(13, history.getHistory().get(i).getSunriseTime());
             preparedStatement.setLong(14, history.getHistory().get(i).getSunsetTime());
+            preparedStatement.execute();
+
+            close();
         }
 
 
