@@ -15,6 +15,4 @@ public class App {
 }
 
 //architektura proserwisowa
-//np. zbieranie danych, np. historia pogody
 //pomyśleć ze springiem
-//link do GitHuba
