@@ -89,5 +89,13 @@ public class PointTest {
                 "Name: Test\nLongitude: 1.0 W\nLatitude: 1.0 S\n");
         Assert.assertEquals(Point.builder().id(0).name("Test").longitude(1.f).latitude(-1.f).build().toStringNameWithCoords(),
                 "Name: Test\nLongitude: 1.0 E\nLatitude: 1.0 S\n");
+
+        Assert.assertEquals(point.toStringNameWithCoordsOneLine(), "Name: Test (Long.: 1.0 E, Lat.: 1.0 N)");
+        Assert.assertEquals(Point.builder().id(0).name("Test").longitude(-1.f).latitude(1.f).build().toStringNameWithCoordsOneLine(),
+                "Name: Test (Long.: 1.0 W, Lat.: 1.0 N)");
+        Assert.assertEquals(Point.builder().id(0).name("Test").longitude(-1.f).latitude(-1.f).build().toStringNameWithCoordsOneLine(),
+                "Name: Test (Long.: 1.0 W, Lat.: 1.0 S)");
+        Assert.assertEquals(Point.builder().id(0).name("Test").longitude(1.f).latitude(-1.f).build().toStringNameWithCoordsOneLine(),
+                "Name: Test (Long.: 1.0 E, Lat.: 1.0 S)");
     }
 }
