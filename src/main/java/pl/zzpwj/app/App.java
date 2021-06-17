@@ -94,13 +94,16 @@ public class App {
                 switch(appMode) {
                     case NONE: { break; }
                     case HISTORY: {
-                        informationTextArea.setText(appDataReceiver.getHistoryDataTextArea(chooseCBox.getSelectedIndex()));
+                        if(chooseCBox.getSelectedIndex() >= 0 && chooseCBox.getSelectedIndex() < chooseCBox.getItemCount()) {
+                            informationTextArea.setText(appDataReceiver.getHistoryDataTextArea(chooseCBox.getSelectedIndex()));
+                        }
                         break;
                     }
                     case SEARCH: {
                         if(validSearching) {
                             if(chooseCBox.getItemCount() > 0) {
                                 informationTextArea.setText(appDataReceiver.getSearchDataTextArea(chooseCBox.getSelectedIndex()));
+
                             }
                             else {
                                 validSearching = false;

@@ -64,9 +64,18 @@ public class AppDataReceiver {
         return historyContainer.getHistory().get(index).toStringTextArea();
     }
 
-    public String getSearchDataTextArea(int index) throws IOException {
+    public String getSearchDataTextArea(int index) throws Exception {
         owmRequester.setPoint(foundPoints.get(index));
         WeatherData weatherData = owmRequester.requestAPIForCurrent();
+
+        addSearchDataToHistory(weatherData);
+
         return weatherData.toStringTextArea();
+    }
+
+    public void addSearchDataToHistory(WeatherData weatherData) throws Exception {
+        if(historyContainer.addWeatherData(weatherData)) {
+            new SQLWriter().write(historyContainer, SQLPropertiesInterface.dbFilepath);
+        }
     }
 }
