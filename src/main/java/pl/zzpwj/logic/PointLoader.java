@@ -38,7 +38,7 @@ public class PointLoader implements PointLoaderInterface {
     private ArrayList<Point> parseCitiesByCountry(JSONArray jsonArray) {
         ArrayList<Point> retPoints = new ArrayList<>();
         for (int i = 0; i < jsonArray.length(); i++) {
-            if(jsonArray.getJSONObject(i).getString("country").equals("PL")) {
+            if(jsonArray.getJSONObject(i).getString("country").equals(country)) {
                 retPoints.add(Point.builder()
                         .id(jsonArray.getJSONObject(i).getInt("id"))
                         .name(jsonArray.getJSONObject(i).getString("name"))

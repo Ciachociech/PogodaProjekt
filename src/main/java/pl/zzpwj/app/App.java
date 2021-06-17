@@ -13,7 +13,6 @@ public class App {
     AppModeEnum appMode = AppModeEnum.NONE;
     int selectedOption;
     boolean validSearching = false;
-    //String textFieldContent;
 
     private JPanel appPanel;
     private JButton showHistoryBtn;

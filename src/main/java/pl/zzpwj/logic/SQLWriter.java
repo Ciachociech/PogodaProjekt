@@ -5,7 +5,6 @@ import pl.zzpwj.data.HistoryContainer;
 
 import java.io.File;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 @NoArgsConstructor
