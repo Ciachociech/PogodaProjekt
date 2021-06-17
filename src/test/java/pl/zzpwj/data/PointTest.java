@@ -70,4 +70,24 @@ public class PointTest {
         Assert.assertTrue(point.equals(Point.builder().id(0).name("Test").longitude(1.0f).latitude(1.0f).build()));
         Assert.assertEquals(point.hashCode(), Point.builder().id(0).name("Test").longitude(1.0f).latitude(1.0f).build().hashCode());
     }
+
+    @Test
+    public void pointToStringText() {
+        int id = 0;
+        String name = "Test";
+        float longitude = 1.0f;
+        float latitude = 1.0f;
+
+        Point point = Point.builder().id(id).name(name).longitude(longitude).latitude(latitude).build();
+        Assert.assertEquals(point.toString(), Point.builder().id(id).name(name).longitude(longitude).latitude(latitude).build().toString());
+        Assert.assertEquals(point.toString(), Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build().toString());
+
+        Assert.assertEquals(point.toStringNameWithCoords(), "Name: Test\nLongitude: 1.0 E\nLatitude: 1.0 N\n");
+        Assert.assertEquals(Point.builder().id(0).name("Test").longitude(-1.f).latitude(1.f).build().toStringNameWithCoords(),
+                "Name: Test\nLongitude: 1.0 W\nLatitude: 1.0 N\n");
+        Assert.assertEquals(Point.builder().id(0).name("Test").longitude(-1.f).latitude(-1.f).build().toStringNameWithCoords(),
+                "Name: Test\nLongitude: 1.0 W\nLatitude: 1.0 S\n");
+        Assert.assertEquals(Point.builder().id(0).name("Test").longitude(1.f).latitude(-1.f).build().toStringNameWithCoords(),
+                "Name: Test\nLongitude: 1.0 E\nLatitude: 1.0 S\n");
+    }
 }

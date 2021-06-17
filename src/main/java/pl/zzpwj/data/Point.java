@@ -23,17 +23,17 @@ public class Point {
     }
 
     public String toStringNameWithCoords() {
-        StringBuilder stringBuilder = new StringBuilder().append("Name: ").append(name).append("\n").append("Latitude: ");
+        StringBuilder stringBuilder = new StringBuilder().append("Name: ").append(name).append("\nLongitude: ");
         if(longitude < 0.f) {
             stringBuilder.append(-longitude).append(" W");
         } else {
             stringBuilder.append(longitude).append(" E");
         }
-        stringBuilder.append("\n").append("Latitude: ");
+        stringBuilder.append("\nLatitude: ");
         if(latitude < 0.f) {
-            stringBuilder.append(-latitude).append(" N");
+            stringBuilder.append(-latitude).append(" S");
         } else {
-            stringBuilder.append(latitude).append(" S");
+            stringBuilder.append(latitude).append(" N");
         }
         return stringBuilder.append("\n").toString();
     }

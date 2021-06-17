@@ -35,4 +35,16 @@ public class PointContainer
         return false;
     }
 
+    public boolean addPoint(ArrayList<Point> points) {
+        boolean result = true;
+        for(Point point : points) {
+            result = result && addPoint(point);
+        }
+        if(!result) {
+            points.clear();
+            return false;
+        }
+        return true;
+    }
+
 }

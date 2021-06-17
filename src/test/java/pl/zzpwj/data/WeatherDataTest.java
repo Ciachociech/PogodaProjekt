@@ -162,6 +162,10 @@ public class WeatherDataTest {
 
         Assert.assertEquals(weatherData.getPoint(), Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build());
         Assert.assertEquals(weatherData.toStringPointDate(), "Test (Sat Jun 12 15:48:11 CEST 2021)");
+
+        Assert.assertEquals(weatherData.toStringTextArea(), new StringBuilder().append("Name: Test\nLongitude: 1.0E\nLatitude: 1.0N\n")
+        .append("Time: Sat Jun 12 15:48:11 CEST 2021\nTemperature: 23.85°C\nFeel temperature: 24.85°C\nPressure: 1000.0hPa\n")
+        .append("Humidity: 94.0%\nWind speed: 4.0m/s").toString());
     }
 
 }

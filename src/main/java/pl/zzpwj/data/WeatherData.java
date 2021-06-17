@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 @ToString
 @EqualsAndHashCode
-public class WeatherData {
+public class WeatherData implements WeatherDataInterface {
     private Point point;
     private Float actualTemperature;
     private Float feelTemperature;
@@ -33,6 +33,16 @@ public class WeatherData {
 
     public String toStringTextArea() {
         return new StringBuilder().append(point.toStringNameWithCoords())
+                .append("Time: ").append(getActualTimeAsDate())
+                .append("\nTemperature: ").append(String.format(java.util.Locale.US, "%.2f", kelvinToCelciusTemperature(actualTemperature)))
+                .append("°C\nFeel temperature: ").append(String.format(java.util.Locale.US, "%.2f", kelvinToCelciusTemperature(feelTemperature)))
+                .append("°C\nPressure: ").append(String.format(java.util.Locale.US, "%.1f", pressure))
+                .append("hPa\nHumidity: ").append(String.format(java.util.Locale.US, "%.1f", humidity))
+                .append("%\nWind speed: ").append(String.format(java.util.Locale.US, "%.1f", windVelocity)).append("m/s").toString();
+    }
+
+    private float kelvinToCelciusTemperature(float kelvinTemp) {
+        return kelvinTemp - kelvinCelciusDiff;
     }
 
     @ToString
