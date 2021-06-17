@@ -47,4 +47,13 @@ public class PointContainer
         return true;
     }
 
+    public ArrayList<String> getPointDataForComboBox(String name) {
+        ArrayList<Point> points = getPointByName(name);
+        ArrayList<String> strings = new ArrayList<>();
+        for(Point point : points) {
+            strings.add(point.toStringNameWithCoordsOneLine());
+        }
+        return strings;
+    }
+
 }

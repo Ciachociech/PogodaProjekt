@@ -4,16 +4,15 @@ import lombok.SneakyThrows;
 import pl.zzpwj.logic.AppDataReceiver;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ContainerAdapter;
+import java.awt.event.*;
 import java.io.IOException;
 
 public class App {
     AppDataReceiver appDataReceiver = new AppDataReceiver();
     AppModeEnum appMode = AppModeEnum.NONE;
     int selectedOption;
+    boolean validSearching = false;
+    //String textFieldContent;
 
     private JPanel appPanel;
     private JButton showHistoryBtn;
@@ -69,8 +68,9 @@ public class App {
                 showForecastBtn.setEnabled(true);
                 pointTextField.setText("");
                 pointTextField.setEditable(true);
-
+                informationTextArea.setText(appDataReceiver.getSearchInformationText());
             }
+
         });
         showForecastBtn.addActionListener(new ActionListener() {
             @Override
@@ -83,20 +83,50 @@ public class App {
                 showForecastBtn.setEnabled(false);
                 pointTextField.setText("");
                 pointTextField.setEditable(true);
+                informationTextArea.setText(appDataReceiver.getSearchInformationText());
 
             }
         });
         chooseCBox.addActionListener(new ActionListener() {
+            @SneakyThrows
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch(appMode) {
                     case NONE: { break; }
                     case HISTORY: {
-                        selectedOption = chooseCBox.getSelectedIndex();
-                        informationTextArea.setText(appDataReceiver.getHistoryDataTextArea(selectedOption));
+                        informationTextArea.setText(appDataReceiver.getHistoryDataTextArea(chooseCBox.getSelectedIndex()));
+                        break;
                     }
-                    case SEARCH: { break; }
+                    case SEARCH: {
+                        if(validSearching) {
+                            if(chooseCBox.getItemCount() > 0) {
+                                informationTextArea.setText(appDataReceiver.getSearchDataTextArea(chooseCBox.getSelectedIndex()));
+                            }
+                            else {
+                                validSearching = false;
+                            }
+                        }
+                        else {
+                            validSearching = true;
+                        }
+
+                        break;
+                    }
                     case FORECAST: { break; }
+                }
+            }
+
+        });
+        pointTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                chooseCBox.removeAllItems();
+                addToComboBox(appDataReceiver.fillPointsComboBox(pointTextField.getText()));
+            }
+
+            private void addToComboBox(String[] items) {
+                for(String item : items) {
+                    chooseCBox.addItem(item);
                 }
             }
         });

@@ -37,5 +37,21 @@ public class Point {
         }
         return stringBuilder.append("\n").toString();
     }
+
+    public String toStringNameWithCoordsOneLine() {
+        StringBuilder stringBuilder = new StringBuilder().append("Name: ").append(name).append(" (Long.: ");
+        if(longitude < 0.f) {
+            stringBuilder.append(-longitude).append(" W,");
+        } else {
+            stringBuilder.append(longitude).append(" E,");
+        }
+        stringBuilder.append(" Lat.: ");
+        if(latitude < 0.f) {
+            stringBuilder.append(-latitude).append(" S)");
+        } else {
+            stringBuilder.append(latitude).append(" N)");
+        }
+        return stringBuilder.toString();
+    }
 }
 
