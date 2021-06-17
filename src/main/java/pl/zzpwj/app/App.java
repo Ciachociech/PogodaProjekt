@@ -6,6 +6,7 @@ import pl.zzpwj.logic.AppDataReceiver;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class App {
     AppDataReceiver appDataReceiver = new AppDataReceiver();
@@ -24,7 +25,7 @@ public class App {
     private JPanel showInformationField;
     private JTextArea informationTextArea;
 
-    public App() throws IOException {
+    public App() throws IOException, SQLException {
         appDataReceiver.init();
 
         showHistoryBtn.setText("Check history");
@@ -135,7 +136,7 @@ public class App {
         });
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
         JFrame jFrame = new JFrame("PogodaProject - ZZPWJ");
         jFrame.setContentPane(new App().appPanel);
         jFrame.setDefaultCloseOperation(jFrame.EXIT_ON_CLOSE);

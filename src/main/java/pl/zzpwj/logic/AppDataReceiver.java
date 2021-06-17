@@ -18,9 +18,11 @@ public class AppDataReceiver {
     ArrayList<Point> foundPoints;
     OWMRequester owmRequester;
 
-    public void init() throws IOException {
+    public void init() throws IOException, SQLException {
         pointContainer = new PointContainer();
         pointContainer.addPoint(new PointLoader().readPointsFromJSON());
+        historyContainer = new SQLLoader().read(SQLPropertiesInterface.dbFilepath);
+        forecastContainer = new ForecastContainer();
         owmRequester = new OWMRequester();
     }
 
@@ -68,9 +70,14 @@ public class AppDataReceiver {
         owmRequester.setPoint(foundPoints.get(index));
         WeatherData weatherData = owmRequester.requestAPIForCurrent();
 
-        addSearchDataToHistory(weatherData);
+        if(weatherData != null) {
+            addSearchDataToHistory(weatherData);
+            return weatherData.toStringTextArea();
+        }
+        else {
+            return "";
+        }
 
-        return weatherData.toStringTextArea();
     }
 
     public void addSearchDataToHistory(WeatherData weatherData) throws Exception {
