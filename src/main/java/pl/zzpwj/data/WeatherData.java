@@ -31,6 +31,10 @@ public class WeatherData {
         return new StringBuilder().append(point.getName()).append(" (").append(getActualTimeAsDate()).append(")").toString();
     }
 
+    public String toStringTextArea() {
+        return new StringBuilder().append(point.toStringNameWithCoords())
+    }
+
     @ToString
     public static final class NullWeatherData extends WeatherData {
 

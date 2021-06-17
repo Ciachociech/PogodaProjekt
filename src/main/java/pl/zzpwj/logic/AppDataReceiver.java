@@ -26,6 +26,6 @@ public class AppDataReceiver {
 
     public String setHistoryInformationText() {
         return new StringBuilder().append("Choose a city from the list (found ").append(historyContainer.getHistory().size())
-                .append(" cities).").toString();
+                .append(" records).").toString();
     }
 }
