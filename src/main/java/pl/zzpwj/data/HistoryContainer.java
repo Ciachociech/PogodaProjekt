@@ -38,4 +38,12 @@ public class HistoryContainer implements WeatherDataListInterface
         }
         return false;
     }
+
+    public ArrayList<String> getHistoryDataForComboBox() {
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        for(WeatherData weatherData : history) {
+            stringArrayList.add(weatherData.toStringPointDate());
+        }
+        return stringArrayList;
+    }
 }

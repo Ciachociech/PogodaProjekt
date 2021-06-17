@@ -75,7 +75,7 @@ public class WeatherDataTest {
     }
 
     @Test
-    public void dateCompatibility() {
+    public void weatherDataDateCompatibility() {
         Long actualTime = 1623505691L;
         Date actualDate = new Date(actualTime * WeatherDataListInterface.millisecondsInSecond);
         Assert.assertEquals(actualDate, new Date(2021 - 1900, Calendar.JUNE, 12, 15, 48, 11));
@@ -150,6 +150,18 @@ public class WeatherDataTest {
                 .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
                 .windVelocity(4.f).windDirection(270.f).actualTime(1623505691L).timeZone(7200L)
                 .sunriseTime(1623464617L).sunsetTime(1623524433L).build().hashCode());
+    }
+
+    @Test
+    public void weatherDataStringTesting() {
+        WeatherData weatherData = WeatherData.builder()
+                .point(Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build())
+                .actualTemperature(297.f).feelTemperature(298.f).pressure(1000.f).humidity(94.f)
+                .windVelocity(4.f).windDirection(270.f).actualTime(1623505691L).timeZone(7200L)
+                .sunriseTime(1623464617L).sunsetTime(1623524433L).build();
+
+        Assert.assertEquals(weatherData.getPoint(), Point.builder().id(0).name("Test").longitude(1.f).latitude(1.f).build());
+        Assert.assertEquals(weatherData.toStringPointDate(), "Test (Sat Jun 12 15:48:11 CEST 2021)");
     }
 
 }

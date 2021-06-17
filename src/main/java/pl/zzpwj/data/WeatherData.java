@@ -27,6 +27,10 @@ public class WeatherData {
         return new Date(actualTime * 1000);
     }
 
+    public String toStringPointDate() {
+        return new StringBuilder().append(point.getName()).append(" (").append(getActualTimeAsDate()).append(")").toString();
+    }
+
     @ToString
     public static final class NullWeatherData extends WeatherData {
 
