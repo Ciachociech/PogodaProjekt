@@ -41,6 +41,11 @@ public class WeatherData implements WeatherDataInterface {
                 .append("%\nWind speed: ").append(String.format(java.util.Locale.US, "%.1f", windVelocity)).append("m/s").toString();
     }
 
+    public String toStringForecastData() {
+        return new StringBuilder().append("Time: ").append(getActualTimeAsDate())
+                .append(" (temp.: ").append(String.format(java.util.Locale.US, "%.2f", kelvinToCelciusTemperature(actualTemperature))).append("°C)").toString();
+    }
+
     private float kelvinToCelciusTemperature(float kelvinTemp) {
         return kelvinTemp - kelvinCelciusDiff;
     }

@@ -70,14 +70,27 @@ public class AppDataReceiver {
         owmRequester.setPoint(foundPoints.get(index));
         WeatherData weatherData = owmRequester.requestAPIForCurrent();
 
-        if(weatherData != null) {
+        if(weatherData.getClass() != WeatherData.NullWeatherData.class) {
             addSearchDataToHistory(weatherData);
             return weatherData.toStringTextArea();
-        }
-        else {
+        } else {
             return "";
         }
+    }
 
+    public String getForecastDataTextArea(int index) throws IOException {
+        owmRequester.setPoint(foundPoints.get(index));
+        ArrayList<WeatherData> weatherData = owmRequester.requestAPIForForecast();
+
+        if(weatherData.size() > 0) {
+            StringBuilder stringBuilder = new StringBuilder().append(weatherData.get(0).getPoint().toStringNameWithCoords());
+            for (int i = 0; i < weatherData.size(); i = i + 3) {
+                stringBuilder.append("\n").append(weatherData.get(i).toStringForecastData());
+            }
+            return stringBuilder.toString();
+        } else {
+            return "";
+        }
     }
 
     public void addSearchDataToHistory(WeatherData weatherData) throws Exception {
@@ -85,4 +98,7 @@ public class AppDataReceiver {
             new SQLWriter().write(historyContainer, SQLPropertiesInterface.dbFilepath);
         }
     }
+
+
+
 }

@@ -85,7 +85,6 @@ public class App {
                 pointTextField.setText("");
                 pointTextField.setEditable(true);
                 informationTextArea.setText(appDataReceiver.getSearchInformationText());
-
             }
         });
         chooseCBox.addActionListener(new ActionListener() {
@@ -104,7 +103,6 @@ public class App {
                         if(validSearching) {
                             if(chooseCBox.getItemCount() > 0) {
                                 informationTextArea.setText(appDataReceiver.getSearchDataTextArea(chooseCBox.getSelectedIndex()));
-
                             }
                             else {
                                 validSearching = false;
@@ -113,10 +111,22 @@ public class App {
                         else {
                             validSearching = true;
                         }
-
                         break;
                     }
-                    case FORECAST: { break; }
+                    case FORECAST: {
+                        if(validSearching) {
+                            if(chooseCBox.getItemCount() > 0) {
+                                informationTextArea.setText(appDataReceiver.getForecastDataTextArea(chooseCBox.getSelectedIndex()));
+                            }
+                            else {
+                                validSearching = false;
+                            }
+                        }
+                        else {
+                            validSearching = true;
+                        }
+                        break;
+                    }
                 }
             }
 
